@@ -1,5 +1,5 @@
 package com.Quiz;
-
+//POJO class
 public class StudentDetails {
 
 	private int studentId;
