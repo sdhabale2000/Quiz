@@ -4,13 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Question {
+public class Question{
+static int score;
+	
+static String grade;
 	public void logic() {
-		int correctAnsCount = 0;
-		//int wrongAnsCount = 0;
-		String grade = " ";
-
+		SaveStudentData s=new SaveStudentData();
 		Scanner scan = new Scanner(System.in);
+		System.out.println("*******************************************Quiz Started.********************************************\n");
+		
 		Questions q1 = new Questions("question:" + "1) Which of the following is not a Java features?",
 				"option1:" + "A.Dynamic", "option2:" + "B.architecture Neutral", "option3:" + "C.Use of pointers",
 				"option4:" + "D.Object-oriented");
@@ -61,12 +63,13 @@ public class Question {
 			System.out.println(map.getKey().getOption3());
 			System.out.println(map.getKey().getOption4());
 
+			
 			System.out.println("Enter Your Answer: ");
 			Character ans = scan.next().charAt(0);
 			int cans = Character.compare(ans, map.getValue());
 			if (cans == 0) {
 				System.out.println("Your Ans is Correct");
-				correctAnsCount++;
+				this.score++;
 				System.out.print("===========================================================\n");
 
 			} else {
@@ -76,23 +79,35 @@ public class Question {
 			}
 
 			// System.out.println("Percentage:"+percentage);
-			if (correctAnsCount >= 1 && correctAnsCount < 4) {
-				grade = "D";
+			if (score >= 1 && score < 4) {
+				this.grade = "D";
 			}
-			if (correctAnsCount > 4 && correctAnsCount < 6) {
-				grade = "C";
+			if (score > 4 && score < 6) {
+				this.grade = "C";
 			}
-			if (correctAnsCount > 6 && correctAnsCount < 8) {
-				grade = "B";
+			if (score > 6 && score < 8) {
+				this.grade = "B";
 			}
-			if (correctAnsCount > 8 && correctAnsCount <= 10) {
-				grade = "A";
+			if (score > 8 && score <= 10) {
+				this.grade = "A";
 			}
 		}
 		System.out.println();
 		System.out.println("==========Result================================================================");
 
-		System.out.println("Your Score:" + correctAnsCount);
+		System.out.println("Your Score:" + score);
 		System.out.println("Your Grade :" + grade);
+		scan.close();
+		
+
 	}
+	
+	int getScore() {
+		
+		return score;
+	}
+	String getGrade() {
+		return grade;
+	}
+
 }
