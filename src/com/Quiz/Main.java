@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
+		GetResult result = new GetResult();
 		Scanner sc = new Scanner(System.in);
 		GetStudentDetails details = new GetStudentDetails();
 		SaveStudentData save = new SaveStudentData();
@@ -20,24 +21,33 @@ public class Main {
 
 		switch (key) {
 		case 1: {
-			details.setStudentDetails();
+
+			details.setStudentDetails();// id=1 --- id =null;
 			q.logic();
-			
-			save.saveStudentData(details.getId(),details.student,q.getGrade(),q.score);
+			try {
+
+				save.saveStudentData(details.getId(), details.student, q.getGrade(), q.score);
+			} catch (Exception e) {
+
+				
+			}
 
 			break;
 		}
 
-		case 2: {
+		case 2:
+
+		{
+			result.getresult();
 			break;
 		}
 		case 3: {
+			result.getStudentId();
 			break;
 		}
+
 		default:
-
-			throw new IllegalArgumentException("Unexpected value: " + key);
-
+			System.out.println("you entered wrong num");
 		}
 		sc.close();
 

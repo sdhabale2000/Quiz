@@ -12,13 +12,14 @@ public class SaveStudentData {
 
 	String getGrade = "";
 	String c = que.grade;
-
+	static char y;
 	public void saveStudentData(int j, String student2, String grade, int score2) {
 		
 		int id = j;
 		String name =student2; 
 		getGrade = getGrade + grade.charAt(0);
 		int score=score2;
+		
 		try {
 			con = getc.getConnection();
 			ps = con.prepareStatement("insert into studentdetail (StudentId,StudentName,Grade,Score) values (?,?,?,?)");
@@ -30,15 +31,20 @@ public class SaveStudentData {
 			int i = ps.executeUpdate();
 			System.out.println("record is updated " + i);
 
-			//x = 'x';
+			
 		} catch (Exception e) {
 			System.out.println("Given id is allready present :");
-			//x = 'y';
-
-			System.out.println(e);
-
 			System.out.println("Enter Student details Again :");
+
+			this.y='x';
+			
+			
+			System.out.println(e);
+			
 		}
+		
+		
 
 	}
+	
 }
